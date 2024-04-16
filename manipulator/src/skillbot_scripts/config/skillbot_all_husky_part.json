@@ -1,0 +1,28 @@
+{
+    "skillbot_session" :
+    {
+        "general" : [
+            {"cmd" : "cd /home/administrator/Repos/manipulator/gitlab_ws/src/ur5_skillbot/skillbot_scripts/bash; ./configuration.bash"},
+            {"cmd" : "rostopic hz /velodyne_points /realsense_gripper/color/image_raw/compressed"},
+            {"cmd" : "rostopic echo /cartographer/tracked_global_odometry/pose/pose/position/x"},
+            {"cmd" : "source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash; rostopic echo /tracked_objects_3d"}
+        ],
+        "manipulator" : [
+            {"cmd" : "source ~/Repos/manipulator/gitlab_ws/devel/setup.bash; rosrun objects_manipulation_v2 robo_cleaner.py"}
+        ],
+        "controller" : [
+            {"cmd" : "source ~/controller_ws/devel/setup.bash; roslaunch control_mobile_robot control_action.launch"},
+            {"cmd" : "source ~/controller_ws/devel/setup.bash; roslaunch control_mobile_robot detection_passage.launch"},
+            {"cmd" : "roslaunch mpc_planner node.launch"},
+            {"cmd" : "echo Hello World!"}
+        ],
+        "nav_stack":[
+            {"cmd" : "cd ~/pointnav_ws; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; source ~/controller_ws/devel/setup.bash --extend; source devel/setup.bash --extend; roslaunch theta_star_planner move_to_action_server.launch"},
+            {"cmd" : "cd ~/pointnav_ws; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; source ~/controller_ws/devel/setup.bash --extend; source devel/setup.bash --extend; roslaunch theta_star_planner find_object_action_server.launch"}
+        ],
+        "behav_tree":[
+            {"cmd" : " rosnode kill /behaviour_tree; cd /home/administrator/Linok/strategic_node/docker; ./start.sh; ./run_tree.sh;"},
+            {"cmd" : " rosnode kill /behaviour_tree; cd /home/administrator/Linok/strategic_node/docker; ./start.sh; ./run_test.sh;"}
+        ]
+    }
+}

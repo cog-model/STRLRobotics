@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <arg name = "color_topic" value = "/realsense_gripper/color/image_raw"/>
+    <arg name = "depth_topic" value = "/realsense_gripper/aligned_depth_to_color/image_raw"/>
+    <node name="aruco_localizator_v2" pkg="aruco_localization_v2" type="aruco_localization_v2" output="screen">
+        <param name = "color_topic" type = "str" value = "$(arg color_topic)"/>
+        <param name = "depth_topic" type = "str" value = "$(arg depth_topic)"/>
+    </node>
+    <node name="objects_manipulation" pkg="objects_manipulation_v2" type="robo_cleaner.py" output="screen" />
+</launch>

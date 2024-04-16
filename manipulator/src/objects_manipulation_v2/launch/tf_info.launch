@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <node name="tf_pub_node" pkg="objects_manipulation_v2" type="tf_info.py" output="screen" />
+</launch>

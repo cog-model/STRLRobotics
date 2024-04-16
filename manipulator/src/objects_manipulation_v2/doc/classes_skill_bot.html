@@ -1,0 +1,187 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      <div class="mermaid">
+    
+        classDiagram
+          class Box {
+            bottom_plane : Plane
+            color
+            front_plane : Plane
+            left_plane : Plane
+            right_plane : Plane
+            top_plane : Plane
+            Makemarker() Marker
+            TransformToFrame(time, frame, inplace)
+            correct_basis()
+          }
+          class BoxHandler {
+            actualId : NoneType
+            aruco_sub
+            box
+            box_ids
+            box_pub
+            boxes : dict
+            table
+            aruco_callback(ar_ar_msg)
+            get_aruco()
+            process_aruco_msg(ar_msg: aruco_msg)
+          }
+          class CtxManager {
+            aruco_sub
+            dynamic_ctx
+            pose_drawer : PoseDrawer
+            yolo_sub
+            aruco_callback(ar_ar_msg: aruco_array_msg) Dict[int, entity.Box]
+            update() Ctx
+            yolo_callback(box_pose: PoseStamped) Dict[int, entity.Box]
+          }
+          class Node {
+            bh
+            pick_act
+            place_act
+            robot
+            tf_listener
+            watch_on_container_pose : list
+            watch_on_floor_pose : list
+            watch_on_floor_pose_2 : list
+            cancel()
+            cb_open_drawer(msg)
+            cb_place_box_on_table(msg)
+            cb_place_in_box(msg)
+            cb_take_box(msg)
+            look_around()
+            place_box_near(msg)
+            place_in_drawer(msg)
+          }
+          class PointCloud {
+            channels : list, NoneType
+            header : Header
+            points : list, NoneType
+            deserialize(str)
+            deserialize_numpy(str, numpy)
+            serialize(buff)
+            serialize_numpy(buff, numpy)
+          }
+          class Publisher {
+            publish()
+          }
+          class RealObject {
+            basis : ndarray
+            frame : str
+            position : ndarray
+            sizes : tuple
+            MakeMarker() Marker
+            TransformToFrame(time, frame, inplace)
+            rel2absolute(relative_position) np.ndarray
+          }
+          class Realsense2PointCloud {
+            cv_depth : NoneType
+            cv_img : NoneType
+            cv_pc : NoneType
+            pc
+            projected_x : NoneType
+            projected_y : NoneType
+            pub
+            semaphore : bool
+            synchronizer
+            v_func
+            x_arr : NoneType
+            y_arr : NoneType
+            CameraCallback(color: Image, depth: Image, cam_info: CameraInfo)
+          }
+          class Robot {
+            pose_locked : bool
+            CorrectPositionByTwist()
+            LockPose()
+            LookAt(point, vel, acc, asyncro)
+            ManualPose()
+            OdomCallback(odom)
+            PoseUnlock()
+            SoftDetachFromObj()
+            cb_joint_state_publisher(fuck)
+            cb_publish_manipulator_state()
+          }
+          class SimpleActionServer {
+            action_server : ActionServer
+            current_goal : ServerGoalHandle
+            execute_callback : NoneType
+            execute_condition : Condition
+            execute_thread : Thread, NoneType
+            goal_callback : NoneType
+            lock : RLock, _RLock
+            need_to_terminate : bool
+            new_goal : bool
+            new_goal_preempt_request : bool
+            next_goal : ServerGoalHandle
+            preempt_callback : NoneType
+            preempt_request : bool
+            terminate_mutex : _RLock, RLock
+            accept_new_goal()
+            executeLoop()
+            get_default_result()
+            internal_goal_callback(goal)
+            internal_preempt_callback(preempt)
+            is_active()
+            is_new_goal_available()
+            is_preempt_requested()
+            publish_feedback(feedback)
+            register_goal_callback(cb)
+            register_preempt_callback(cb)
+            set_aborted(result, text)
+            set_preempted(result, text)
+            set_succeeded(result, text)
+            start()
+          }
+          class Subscriber {
+            callback : NoneType
+            callback_args : NoneType
+            unregister()
+          }
+          class Table {
+          }
+          class TimeSynchronizer {
+            enable_reset : bool
+            input_connections
+            latest_stamps
+            lock : lock
+            queue_size
+            queues
+            add(msg, my_queue, my_queue_index)
+            connectInput(fs)
+          }
+          class TransformListener {
+          }
+          class vectorize {
+            cache : bool
+            excluded : set
+            otypes : NoneType, str
+            pyfunc
+            signature : NoneType
+          }
+          Box --|> RealObject
+          Table --|> RealObject
+          SimpleActionServer --* Node : pick_act
+          SimpleActionServer --* Node : place_act
+          TimeSynchronizer --* Realsense2PointCloud : synchronizer
+          vectorize --* Realsense2PointCloud : v_func
+          Publisher --* BoxHandler : box_pub
+          Publisher --* Realsense2PointCloud : pub
+          Publisher --* Robot : _joint_state_publisher
+          Publisher --* Robot : _manipulator_state_publisher
+          Subscriber --* BoxHandler : aruco_sub
+          Subscriber --* CtxManager : aruco_sub
+          Subscriber --* CtxManager : yolo_sub
+          PointCloud --* Realsense2PointCloud : pc
+          CtxManager --* Node : bh
+          Box --* BoxHandler : box
+          Box --* BoxHandler : box
+          Box --* BoxHandler : box
+          RealObject --* BoxHandler : box
+          Table --* BoxHandler : table
+          Robot --* Node : robot
+          TransformListener --* Node : tf_listener
+  
+       </div>
+  </body>
+</html>

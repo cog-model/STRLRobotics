@@ -1,0 +1,8 @@
+int32 object_id  # class or tracking id
+---
+# 0 - success
+# 1 - error
+int32 return_code
+
+ObjectPose object_pose
+

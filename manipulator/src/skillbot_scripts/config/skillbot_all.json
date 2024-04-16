@@ -1,0 +1,47 @@
+{
+    "skillbot_session" :
+    {
+        "general" : [
+            {"cmd" : "cd /home/administrator/Repos/manipulator/gitlab_ws/src/ur5_skillbot/skillbot_scripts/bash; ./configuration.bash"},
+            {"cmd" : "rostopic hz /velodyne_points"},
+            {"cmd" : "rostopic hz /realsense_gripper/color/image_raw/compressed"},
+            {"cmd" : "source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash; rostopic echo /tracked_objects_3d"}
+        ],
+        "manipulator" : [
+            {"cmd" : "source ~/Repos/manipulator/gitlab_ws/devel/setup.bash; rosrun objects_manipulation_v2 robo_cleaner.py"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 object_pose_estimation_node.py -vis"}
+        ],
+        "localization" : [
+            {"cmd" : "cd ~/cartographer_ws; python3 run_cartographer.py -l --load-map 5th_floor_with_polygon.pbstream"},
+            {"cmd" : "cd ~/rtabmap_ws; python3 run_rtabmap.py --load-map 5th_floor_with_polygon.ocp"},
+            {"cmd" : "cd ~/rtabmap_ws; python3 run_rtabmap.py -lm"},
+            {"cmd" : "rostopic echo /cartographer/tracked_global_odometry/pose/pose/position/x"}
+        ],
+        "control":[
+            {"cmd" : "roslaunch mpc_planner node.launch"},
+            {"cmd" : "source ~/controller_ws/devel/setup.bash; roslaunch control_mobile_robot control_action.launch"},
+            {"cmd" : "source ~/controller_ws/devel/setup.bash; roslaunch control_mobile_robot detection_collision.launch"},
+            {"cmd" : ""}
+        ],
+        "nav_stack":[
+            {"cmd" : "cd ~/pointnav_ws; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; source ~/controller_ws/devel/setup.bash --extend; source devel/setup.bash --extend; roslaunch theta_star_planner move_to_action_server.launch"},
+            {"cmd" : "cd ~/pointnav_ws; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; source ~/controller_ws/devel/setup.bash --extend; source devel/setup.bash --extend; roslaunch theta_star_planner find_object_action_server.launch"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 project_objects_3d_on_occupancy_node.py"},
+            {"cmd" : ""}
+        ],
+        "behav_tree":[
+            {"cmd" : " rosnode kill /behaviour_tree; cd /home/administrator/Linok/strategic_node/docker; ./start.sh; ./run_tree.sh;"},
+            {"cmd" : " rosnode kill /behaviour_tree; cd /home/administrator/Linok/strategic_node/docker; ./start.sh; ./run_test.sh;"}
+        ],
+        "segmentation":[
+            {"cmd" : "cd ~/zemskova_ts; source openseed_env/bin/activate; cd ~/zemskova_ts/husky_tidy_bot_cv_ws; source devel/setup.bash; cd ~/zemskova_ts/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts/; python3 openseed_node.py -vis"},
+            {"cmd" : "source /opt/ros/melodic/setup.bash; cd ~/zemskova_ts; source openseed_env/bin/activate; cd ~/zemskova_ts/husky_tidy_bot_cv_ws; source devel/setup.bash; cd ~/zemskova_ts/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts/; python3 text_query_generation_server.py"}
+        ],
+        "3d_tracking":[
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 bot_sort_node.py -vis"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 tracker_3d_node.py -vis"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; DEPTH_TO_POINT_CLOUD_ALLOW_PYTHON_IMPLEMENTATION=1 python3 object_point_cloud_extraction_node.py -vis"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; DEPTH_TO_POINT_CLOUD_ALLOW_PYTHON_IMPLEMENTATION=1 python3 visualize_objects_point_cloud.py"}
+        ]
+    }
+}

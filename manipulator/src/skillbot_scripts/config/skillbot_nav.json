@@ -1,0 +1,23 @@
+{
+    "skillbot_session" :
+    {
+        "manipulator" : [
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 yolov8_node.py -vis"},
+            {"cmd" : "cd ~/krishtopik/husky_tidy_bot_cv_ws/src/husky_tidy_bot_cv/scripts; source ~/Repos/manipulator/geom_ws/devel/setup.bash; source ~/krishtopik/husky_tidy_bot_cv_ws/devel/setup.bash --extend; source ~/krishtopik/cvbridge_build_ws/devel/setup.bash --extend; python3 object_pose_estimation_node.py -id 0 -align-90"},
+            {"cmd" : "source ~/Repos/manipulator/gitlab_ws/devel/setup.bash; rosrun objects_manipulation_v2 robo_cleaner.py"},
+            {"cmd" : "source ~/Repos/manipulator/gitlab_ws/devel/setup.bash; roslaunch aruco_localization_v2 huskyRS.launch"}
+        ],
+        "localization" : [
+            {"cmd" : "cd ~/cartographer_ws; python3 run_cartographer.py -l --load-map 5th_floor_with_polygon.pbstream"},
+            {"cmd" : "cd ~/rtabmap_ws; python3 run_rtabmap.py --load-map 5th_floor_with_polygon.ocp"},
+            {"cmd" : "cd ~/rtabmap_ws; python3 run_rtabmap.py -lm"},
+            {"cmd" : "rostopic echo /cartographer/tracked_global_odometry/pose/pose/position/x"}
+        ], 
+        "nav_stack":[
+            {"cmd" : "cd ~/pointnav_ws; source devel/setup.bash; roslaunch theta_star_planner location_nav_action_server.launch"},
+            {"cmd" : "roslaunch mpc_planner node.launch"},
+            {"cmd" : "source ~/controller_ws/devel/setup.bash; roslaunch control_mobile_robot control_real.launch"},
+            {"cmd" : "rosnode list | grep control"}
+        ]
+    }
+}

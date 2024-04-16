@@ -1,0 +1,15 @@
+{
+    "default_session_1" :
+    { "default_window" : [
+            {"cmd" : "clear; echo hello1"},
+            {"cmd" : "clear; echo hello2"},
+            {"cmd" : "clear; echo hello3"},
+            {"cmd" : "clear; echo hello3"},
+            {"cmd" : "clear; echo hello3"},
+            {"cmd" : "clear; echo hello4"}
+        ],
+        "default_window_2" : [
+            {"cmd" : "clear; echo hello1"}
+        ]
+    }
+}
