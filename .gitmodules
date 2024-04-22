@@ -1,0 +1,3 @@
+[submodule "slam-cartographer-and-rtabmap"]
+	path = slam-cartographer-and-rtabmap
+	url = https://github.com/cog-model/slam-cartographer-and-rtabmap
