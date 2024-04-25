@@ -1,0 +1,10 @@
+string object
+string location
+---
+# Result
+string message
+int64 code
+---
+# Feedback
+float64 x
+float64 y

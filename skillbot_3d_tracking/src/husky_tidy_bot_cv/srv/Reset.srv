@@ -1,0 +1,2 @@
+---
+time process_after_stamp  # all messages with stamps <= process_after_stamp should be rejected

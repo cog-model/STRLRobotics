@@ -1,1 +1,8 @@
 __pycache__
+.catkin_workspace
+.catkin_tools
+build/
+devel/
+src/CMakeLists.txt
+.vscode
+*logs*

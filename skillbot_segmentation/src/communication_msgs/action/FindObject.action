@@ -1,0 +1,9 @@
+string object
+---
+# Result
+string message
+int64 code
+---
+# Feedback
+float64 x
+float64 y
