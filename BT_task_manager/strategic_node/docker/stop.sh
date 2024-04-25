@@ -2,3 +2,4 @@
 
 docker stop strategic_node
 
+xhost -local:root

@@ -1,4 +1,12 @@
+.vscode/
 .catkin_workspace
+__pycache__/
 build/
 devel/
 src/CMakeLists.txt
+
+# ignore additional packages in workspace
+src/*
+!src/behaviour_tree
+
+src/behaviour_tree/scripts/tests/

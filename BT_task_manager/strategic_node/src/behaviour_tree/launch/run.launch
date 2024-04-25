@@ -1,4 +1,0 @@
-<launch>
-    <rosparam file="$(find behaviour_tree)/config/params.yaml" />
-    <node pkg="behaviour_tree" type="strategic_node.py" output="screen" name="strategic_node"></node>
-</launch>

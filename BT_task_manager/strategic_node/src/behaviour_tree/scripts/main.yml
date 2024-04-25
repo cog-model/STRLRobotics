@@ -1,0 +1,3 @@
+tree_tick_rate: 0.5 # tree sleep duration in sec, 0.5 is a minimal value on Husky
+llm_topic: "llm_plan"
+telegram_commands_topic: "telegram_commands"
