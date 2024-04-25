@@ -1,0 +1,7 @@
+<launch>
+  <node name="mpc_planner" pkg="mpc_planner" type="mpc_planner" output="screen" required="true">
+  </node>
+
+<rosparam command="load" file="$(find mpc_planner)/config_params/ros_parameters.yaml"/>
+
+</launch>

@@ -1,0 +1,11 @@
+<launch>
+<!-- arg name="x"/>
+<arg name="y"/ -->
+<arg name="global_frame" default="local_map_lidar"/>
+
+<node pkg="tx2_action_server" type="find_object_action_server.py" name="find_object_action_server" output="screen">
+  <param name="global_frame" value="$(arg global_frame)"/>
+  <param name="tolerance" value="1.5"/>
+</node>
+
+</launch>

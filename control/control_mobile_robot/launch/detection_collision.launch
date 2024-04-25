@@ -1,0 +1,4 @@
+<launch>
+    <node name="detection_collision" pkg="control_mobile_robot" type="detection_collision" output="screen">
+    </node>
+</launch>

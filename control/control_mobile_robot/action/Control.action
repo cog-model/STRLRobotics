@@ -1,0 +1,9 @@
+# Goal
+string goal
+---
+# Result
+string status
+---
+# Feedback
+float32 x
+float32 y

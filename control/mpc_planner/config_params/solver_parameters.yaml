@@ -1,0 +1,88 @@
+# Number of shooting nodes for nmpc problem
+N_nodes: 20
+
+
+V_path: 0.5
+
+# Maximum number of static obstacles that solver accept 
+num_stat_obst: 100
+
+# How many parameters needed to describe a static obstacle  
+# (x y radius)
+size_stat_param: 3
+
+# The length between the wheels axes of the robot
+L_robot: 0.65
+
+# Radius of static obstacle's cricle
+r_obst: 0.35   #0.265  #0.1325
+
+# The maximum constraint for x axis
+x_max: 100
+
+# The minimum constraint for x axis
+x_min: -100
+
+# The maximum constraint for y axis
+y_max: 100
+
+# The minimum constraint for y axis
+y_min: -100
+
+# The maximum constraint for linear velocity
+v_max: 1.0
+
+# The minimum constraint for linear velocity
+v_min: 0
+
+# The maximum constraint for rotation angle
+theta_max: 100
+
+# The minimum constraint for rotation angle
+theta_min: -100
+
+# The maximum constraint for aceleration
+a_max: 0.25
+
+# The minimum constraint for aceleration
+a_min: -0.25
+
+# The maximum constraint for angular velocity 
+w_max: 0.4
+
+# The minimum constraint for angular velocity 
+w_min: -0.4
+
+# Weight for obstacle term
+w_obst: 100
+
+# Weight for x coordinate
+w_x: 1
+
+# Weight for y coordinate
+w_y: 1
+
+# Weight for linear velocity
+w_v: 10
+
+# Weight for theta angle
+w_theta: 1
+
+# Weight for angular velocity 
+w_w: 0
+
+# Weight for aceeleration
+w_a: 0
+
+# Weight for end x coordinate
+w_x_e: 100
+
+# Weight for end y coordinate
+w_y_e: 100
+
+# Weight for end linear velocity
+w_v_e: 100
+
+# Weight for end theta angle
+w_theta_e: 100
+

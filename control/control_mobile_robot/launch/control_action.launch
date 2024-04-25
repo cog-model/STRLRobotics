@@ -1,0 +1,5 @@
+<launch>
+    <node name="control_mobile_robot" pkg="control_mobile_robot" type="control_mobile_robot" output="screen">
+    </node>
+    <rosparam command="load" file="$(find control_mobile_robot)/config/config_real.yaml"/>
+</launch>

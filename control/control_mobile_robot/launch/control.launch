@@ -1,0 +1,8 @@
+<launch>
+    <arg name="flag_global_map" default='true'/>
+    <param name="flag_global_map" value="$(arg flag_global_map)"/>
+    <node name="control_1" pkg="control_mobile_robot" type="control_1" output="screen">
+    
+    </node>
+    <rosparam command="load" file="$(find control_mobile_robot)/config/config_real.yaml"/>
+</launch>

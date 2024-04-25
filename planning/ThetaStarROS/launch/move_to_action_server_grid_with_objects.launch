@@ -1,0 +1,26 @@
+<launch>
+<!-- arg name="x"/>
+<arg name="y"/ -->
+<arg name="global_frame" default="local_map_lidar"/>
+
+<node pkg="theta_star_planner" type="theta_star_planner_node" name="planner" output="screen">
+  <param name="agent_radius_thin" value="0.0"/>
+  <param name="agent_radius_thick" value="0.3"/>
+  <param name="reach_radius" value="0.2"/>
+  <param name="inflated_map_topic" value="/grid_map_inflated"/>
+  <!-- remap from="/map" to="/occupancy_grid_map/grid_map"/ -->
+  <remap from="/map" to="/grid_with_objects"/>
+</node>
+
+<node pkg="tx2_action_server" type="navigate_to_object_action_server.py" name="move_to_action_server" output="screen">
+  <param name="global_frame" value="$(arg global_frame)"/>
+  <param name="tolerance" value="1.5"/>
+  <param name="rate" value="2"/>
+  <param name="timeout" value="600"/>
+  <param name="max_path_fails" value="50"/>
+</node>
+
+<!-- include file="$(find controller_n)/launch/control_real.launch"/ -->
+
+<!-- include file="$(find relative_motion)/launch/motion.launch"/ -->
+</launch>

@@ -1,0 +1,17 @@
+path_theta_topic: 'path'  
+path_mpc_topic: 'mpc_planner/local_path'  #path #/mpc_planner/local_path
+path_mpcl4c_topic: 'path_mpcl4c/local_path' 
+direction_topic: 'flag_forward'
+orient_topic: 'flag_orient'
+globla_local_topic: 'flag_global_map'  # if true then this mean we work in global map so there is no narrow 
+cmd_topic: 'cmd_vel'
+global_frame: 'local_map_lidar'
+base_frame: 'base_link'
+odometry_topic: 'lol_odom'
+status_topic: 'control_status'
+max_v: 0.2
+min_v: 0
+acc_v: 0.04
+max_w: 0.38
+acc_w: 0.2
+correct_orient_at_last_point: false

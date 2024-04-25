@@ -1,0 +1,15 @@
+<launch>
+<node pkg="theta_star_planner" type="theta_star_planner_node" name="planner" output="screen">
+  <param name="agent_radius_thin" value="0.2"/>
+  <param name="agent_radius_thick" value="0.2"/>
+  <param name="reach_radius" value="0.4"/>
+  <remap from="/map" to="/occupancy_grid_map/grid_map"/>
+</node>
+
+<node pkg="tx2_action_server" type="from_rviz.py" name="action_server" output="screen">
+  <param name="tolerance" value="1.5"/>
+  <param name="rate" value="2"/>
+  <param name="timeout" value="60"/>
+  <param name="max_path_fails" value="5"/>
+</node>
+</launch>

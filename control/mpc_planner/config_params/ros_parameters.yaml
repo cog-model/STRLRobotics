@@ -1,0 +1,22 @@
+rate_loop: 10
+
+global_path_topic: /path
+
+mpc_path_topic: mpc_planner/local_path
+
+grid_map_topic:  /occupancy_grid_map/grid_map
+
+grid_local_map_topic: /occupancy_grid_local_map/grid_map
+
+control_status_topic: control_status
+
+global_frame: local_map_lidar
+
+local_frame: base_link
+
+globla_local_topic: flag_global_map
+
+odom_husky: /husky_velocity_controller/odom
+
+
+
