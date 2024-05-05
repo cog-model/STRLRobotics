@@ -1,35 +1,54 @@
-# Стек мобильного автономного робота [Центра когнитивного моделирования МФТИ](https://cogmodel.mipt.ru/) Husky с манипулятором UR5
+# STRLRobotics open platform for mobile mantipuation
 
-## Описание
+## Description
 
-В данном репозитории находится программное обеспечение в виде набора ROS 1 (Melodic / Noetic) модулей для автономного мобильного агента с манипулятором. Разработанная система позволяет выполнять задачи перемещения и взаимодействия с окружающими объектами.
+This repository contains the STRLRobotics platform software in the form of a set of ROS 1 (Melodic / Noetic) modules for an autonomous mobile agent with a manipulator (based on the Husky mobile platform with a UR5 manipulator). The developed system allows you to perform the tasks of moving and interacting with surrounding objects.
 
-## Модули
+![SRTLRobotics architecture](https://github.com/cog-model/STRLRobotics/blob/main/assets/LLMObjectSorter%20Pipeline-STRLRobotics_en.png)
 
-### Высокоуровневое планирование
+## Modules
 
-Высокоуровневое планирование реализовано в виде дерева поведения, которое на вход может принимать набор задач из конечного списка (FIND, MOVE_TO, PUT, PICK) с их агрументами (типами объектов и/или локациями). Данный узел следит за коррекностью выполнения последовательности.
+### High-level planning (Strategic level)
 
-### Сегментация
+- High-level planning is implemented in the form of a behavior tree, which can take as input a set of tasks from a finite list (FIND, MOVE_TO, PUT, PICK) with their arguments (object types and/or locations). This node monitors the correct execution of the sequence.
 
-Модель open-vocabluary для 2D сегментации объектов по запросу.
+### Query-based object segmentation (Tactical level)
 
-### Трекинг
+- Open-vocabluary model for 2D object segmentation on text query.
+- 6DoF pose estimation of objects.
 
-Узлы для 2D и 3D трекинга объектов.
+### Tracking found objects (Tactical level)
 
-### Навигация
+- Nodes for 2D and 3D object tracking.
 
-Лидарная локализация на основе Cartographer и узел построения карты проходимости на основе RTabMap.
+### Localization and occupancy map reconstruction (Tactical level)
 
-### Планирование
+- LiDAR localization based on Cartographer.
+- A node for constructing an occupancy map based on RTabMap.
 
-Глобальное планирование на основе Theta*.
+### Planning and controlling the movement of a mobile platform (Tactical level)
 
-### Контрол
+- Global planning based on Theta*.
+- Model predictive control algorithm
 
-Узлы для исполнения траекторий движения без коллизий с локальными препятствиями.
+### Planning and controlling the movement of the manipulator (Tactical level)
 
-### Манипулирование
+- Nodes for executing motion trajectories without collisions with local obstacles.
 
-Надстройка над API UR5 для функционирования манипулятора.
+### Formation of control actions and obtaining the state of joints and gripper of the manipulator (Reactive level)
+
+- Add-on for API UR5 for the operation of the manipulator.
+
+If you use our code please cite our [paper](https://www.mathnet.ru/eng/iipr/y2023/i2/p45):
+
+```
+@article{mironov2023strl,
+  title={STRL-Robotics: intelligent control for robotic platform in human-oriented environment},
+  author={Mironov, KV and Yudin, DA and Alhaddad, M and Makarov, DA and Pushkarev, DS and Linok, SA and Belkin, IV and Krishtopik, AS and Golovin, VA and Yakovlev, K and others},
+  journal={Artificial Intelligence and Decision Making},
+  number={2},
+  pages={45--63},
+  year={2023}
+}
+```
+
