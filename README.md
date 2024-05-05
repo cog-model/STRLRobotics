@@ -44,7 +44,7 @@ If you use our code please cite our [paper](https://www.mathnet.ru/eng/iipr/y202
 ```
 @article{mironov2023strl,
   title={STRL-Robotics: intelligent control for robotic platform in human-oriented environment},
-  author={Mironov, KV and Yudin, DA and Alhaddad, M and Makarov, DA and Pushkarev, DS and Linok, SA and Belkin, IV and Krishtopik, AS and Golovin, VA and Yakovlev, K and others},
+  author={Mironov, KV and Yudin, DA and Alhaddad, M and Makarov, DA and Pushkarev, DS and Linok, SA and Belkin, IV and Krishtopik, AS and Golovin, VA and Yakovlev, K and Panov, AI},
   journal={Artificial Intelligence and Decision Making},
   number={2},
   pages={45--63},
