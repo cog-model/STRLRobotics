@@ -1,4 +1,4 @@
-# STRLRobotics open platform for mobile manipulation
+# STRLRobotics open platform for mobile mantipuation
 
 ## Description
 
@@ -10,30 +10,31 @@ This repository contains the STRLRobotics platform software in the form of a set
 
 ### High-level planning (Strategic level)
 
-- High-level planning is implemented in the form of a behavior tree, which can take as input a set of tasks from a finite list (FIND, MOVE_TO, PUT, PICK) with their arguments (object types and/or locations). This node monitors the correct execution of the sequence.
+- High-level planning is implemented in the form of a behavior tree, which can take as input a set of tasks from a finite list (FIND, MOVE_TO, PUT, PICK) with their arguments (object types and/or locations). This node monitors the correct execution of the sequence. [code](BT_task_manager)
 
 ### Query-based object segmentation (Tactical level)
 
-- Open-vocabluary model for 2D object segmentation on text query.
-- 6DoF pose estimation of objects.
+- Open-vocabluary model for 2D object segmentation on text query. [code](skillbot_segmentation/src/openseed_src)
 
 ### Tracking found objects (Tactical level)
 
-- Nodes for 2D and 3D object tracking.
+- Nodes for 2D and 3D object tracking. [code](tracking/skillbot_3d_tracking/src/husky_tidy_bot_cv)
+- 6DoF pose estimation of objects. [code](tracking/skillbot_3d_tracking/src/husky_tidy_bot_cv)
 
 ### Localization and occupancy map reconstruction (Tactical level)
 
-- LiDAR localization based on Cartographer.
-- A node for constructing an occupancy map based on RTabMap.
+- LiDAR localization based on Cartographer. [code](https://github.com/cog-model/slam-cartographer-and-rtabmap/tree/18347232fbcdafc5f237301e043a9ff765f77f41)
+- A node for constructing an occupancy map based on RTabMap. [code](https://github.com/cog-model/slam-cartographer-and-rtabmap/tree/18347232fbcdafc5f237301e043a9ff765f77f41)
 
 ### Planning and controlling the movement of a mobile platform (Tactical level)
 
-- Global planning based on Theta*.
-- Model predictive control algorithm
+- Global planning based on Theta*. [code](planning)
+- Model predictive control algorithm [code](control/mpc_planner)
+- General control [code](control/control_mobile_robot)
 
 ### Planning and controlling the movement of the manipulator (Tactical level)
 
-- Nodes for executing motion trajectories without collisions with local obstacles.
+- Nodes for executing motion trajectories without collisions with local obstacles. [code](manipulator)
 
 ### Formation of control actions and obtaining the state of joints and gripper of the manipulator (Reactive level)
 
