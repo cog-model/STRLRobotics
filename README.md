@@ -14,7 +14,7 @@ This repository contains the STRLRobotics platform software in the form of a set
 
 ### Query-based object segmentation (Tactical level)
 
-- Open-vocabluary model for 2D object segmentation on text query. [code](skillbot_segmentation/src/openseed_src)
+- Open-vocabluary model for 2D object segmentation on text query. [code](skillbot_segmentation/src/husky_tidy_bot_cv)
 
 ### Tracking found objects (Tactical level)
 
