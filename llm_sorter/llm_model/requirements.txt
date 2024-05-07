@@ -1,0 +1,12 @@
+transformers==4.29.0
+wandb==0.15.5
+accelerate==0.21.0
+sentencepiece==0.1.99
+bitsandbytes==0.40.2
+scipy==1.10.0
+pydantic==1.10.12
+fastapi==0.100.0
+uvicorn==0.23.1
+typing_extensions==4.7.1
+protobuf==3.20.3
+fschat==0.2.30

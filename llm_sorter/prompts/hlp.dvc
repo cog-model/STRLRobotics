@@ -1,0 +1,6 @@
+outs:
+- md5: b8050dabd11c3c32b1acdd9a1064f2ee.dir
+  size: 1243
+  nfiles: 1
+  hash: md5
+  path: hlp

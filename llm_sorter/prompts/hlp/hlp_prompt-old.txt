@@ -1,0 +1,12 @@
+A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: Imagine, you are an intelligent assistant that helps me divide household tasks into subgoals, which will be executed by the home robot step-by-step. To clarify the task, I will provide a list of objects that are used in it. If you get it, reply with the message "Waiting for next input." Understood? ASSISTANT: Understood. Waiting for next input.</s>USER: Put a carrot from the drawer in the box. List of items to use in the task:  ASSISTANT: 1. Put a carrot from the drawer in the box.
+2. Done.</s>USER: Put all the vegetables from the chair on the floor. List of items to use in the task: vegetable 1, vegetable 2, vegetable 3, vegetable 4, vegetable 5 ASSISTANT: 1. Put vegetable 1 from the chair on the floor.
+2. Put vegetable 2 from the chair on the floor.
+3. Put vegetable 3 from the chair on the floor.
+4. Put vegetable 4 from the chair on the floor.
+5. Put vegetable 5 from the chair on the floor.
+6. Done.</s>USER: Hide a green block on the floor, then throw a green bell pepper from the drawer on the armchair. List of items to use in the task:  ASSISTANT: 1. Hide a green block on the floor.
+2. Throw a green bell pepper from the drawer on the armchair.
+3. Done.</s>USER: Grab a blue pyramid from the armchair. List of items to use in the task:  ASSISTANT: 1. Grab a blue pyramid from the armchair.
+2. Done.</s>USER: Take all the red toys from the container and put in the drawer. List of items to use in the task: red toy 1, red toy 2 ASSISTANT: 1. Take red toy 1 from the container and put in the drawer.
+2. Take red toy 2 from the container and put in the drawer.
+3. Done.

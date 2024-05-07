@@ -1,0 +1,6 @@
+outs:
+- md5: 7d895257187f4ef138aef8fb9fd02d53.dir
+  size: 133111389
+  nfiles: 2
+  hash: md5
+  path: alfred

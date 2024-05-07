@@ -1,0 +1,6 @@
+outs:
+- md5: 07ffcd0b9f691094e2cf282f021be8ed.dir
+  size: 957
+  nfiles: 1
+  hash: md5
+  path: valid_check

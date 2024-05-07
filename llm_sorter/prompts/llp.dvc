@@ -1,0 +1,6 @@
+outs:
+- md5: 6baf16717e58b1cad37b690677842655.dir
+  size: 6267
+  nfiles: 2
+  hash: md5
+  path: llp

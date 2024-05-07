@@ -1,0 +1,42 @@
+logger:
+  _target_: llm_sorter.WandbLogger
+  log_filename: run.log
+  log_dir: ${hydra:run.dir}/
+  project_name: llm_sorter
+  run_name: ${model.name} ${gen_method.name} ${dataset.dataset_filename}
+model:
+  name: docker vicuna
+  _target_: llm_sorter.models.api_model.APIModel
+  url: http://127.0.0.1:8080/
+experiment:
+  logging_dir: ${hydra:run.dir}/
+  path_to_data_dir: ${hydra:runtime.cwd}/data/
+  device: 1
+  seed: 0
+gen_method:
+  _target_: llm_sorter.gen_methods.FullPlanGeneration
+  name: full generation
+hlp_processor:
+  _target_: llm_sorter.processors.HLPProcessor
+  name: hlp processor
+  run_name: ${model.name} ${gen_method.name} ${dataset.dataset_filename}
+  path_to_prompt_dir: ${hydra:runtime.cwd}/prompts/hlp
+  prompt_filename: hlp_prompt.txt
+  load_prompt_from_file: true
+llp_processor:
+  _target_: llm_sorter.processors.LLPProcessor
+  name: llp processor
+  run_name: ${model.name} ${gen_method.name} ${dataset.dataset_filename}
+  path_to_prompt_dir: ${hydra:runtime.cwd}/prompts/llp
+  prompt_filename: vicuna_prompt.txt
+  load_prompt_from_file: true
+vc_processor:
+  _target_: llm_sorter.processors.ValidCheckProcessor
+  name: valid check processor
+  run_name: ${model.name} ${gen_method.name} ${dataset.dataset_filename}
+  path_to_prompt_dir: ${hydra:runtime.cwd}/prompts/valid_check
+  prompt_filename: valid_check.txt
+  load_prompt_from_file: true
+dataset:
+  _target_: ???
+  dataset_filename: sorter_planning

@@ -1,0 +1,29 @@
+services:
+  llm_model:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfile.model
+    image: llm_model:latest
+    container_name: llm_model
+    ports:
+      - "8080:8080"
+    volumes:
+      - $HOME/.cache/huggingface/hub/:/root/.cache/huggingface/hub/
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['0']
+            capabilities: [gpu]
+    network_mode: "host"
+
+  llm_sorter:
+    build:
+      context: ..
+      dockerfile: ./docker/dockerfile.planner
+    image: llm_sorter:latest
+    container_name: llm_sorter
+    ports:
+      - "8082:8082"
+    network_mode: "host"
