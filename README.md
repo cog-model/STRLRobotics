@@ -1,4 +1,4 @@
-# STRLRobotics open platform for mobile mantipuation
+# STRLRobotics open platform for mobile manipuation
 
 ## Description
 
